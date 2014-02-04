@@ -20,7 +20,6 @@
     "handlebars-brunch": "~1.7.2",
     "javascript-brunch": "~1.7.0",
     "less-brunch": "~1.7.0",
-    "sass-brunch": "~1.7.0",
     "uglify-js-brunch": "~1.7.3",
     "read-components": "~0.5.1"
   },
