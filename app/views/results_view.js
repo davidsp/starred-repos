@@ -3,8 +3,9 @@ modules = require('modules/remoteUtils');
 
 var RepoResultsView = Backbone.View.extend({
 	template: template,
+
 	id: '#app',
-	initialize: function(){
+	initialize: function(opts){
 		// this.render();
 		this.prepareView();
 	},
@@ -14,18 +15,21 @@ var RepoResultsView = Backbone.View.extend({
 	},
 
 	show: function(id){
-		console.log(id);
-		modules.getJson(id,this.postJson);
+		//XXX: look further if it supports IE8-9
+		// modules.getPaginatedJson(id,this.postJson.bind(this));
+		modules.getPaginatedJson(id,_.bind(this.postJson, this));
 
 	},
 
 	postJson: function(data){
-		console.log(data);
+		this.model = data;
+		this.renderData();
 	},
 
-	render: function(){
+	renderData: function(){
 		$(this.id).html(this.template({
-			title: 'test a'
+			titulo: 'title',
+			model: this.model
 		}))
 	}
 });
